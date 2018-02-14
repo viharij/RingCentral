@@ -1,9 +1,12 @@
 package com.calllog.config;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import com.calllog.client.CallLogRestEntity;
@@ -22,7 +25,9 @@ public class RestEntityConfig {
     @Bean
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
-        restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        //List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
+        //restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory());
+        //restTemplate.setMessageConverters(messageConverters);
         return restTemplate;
     }
 

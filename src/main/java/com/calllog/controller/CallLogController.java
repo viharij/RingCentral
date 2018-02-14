@@ -3,6 +3,7 @@ package com.calllog.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,8 +30,8 @@ public class CallLogController {
 																@PathVariable(name="extensionId") String extensionId, 
 																@PathVariable(name="accountId") String accountId,
 																@RequestParam(name="view") String view) {
-		callLogfacade.getCallRecordsById(callRecordId, extensionId, accountId, view);
-		return null;
+		UserCallLogRecord userCallLogRecord = callLogfacade.getCallRecordsById(callRecordId, extensionId, accountId, view);
+		return new ResponseEntity<UserCallLogRecord>(userCallLogRecord, HttpStatus.OK);
 	}
 	
 }

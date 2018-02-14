@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -38,7 +37,7 @@ public class CallLogRestEntity {
     	UserCallLogRecord  userCallLogRecord = null;
     	HttpHeaders headers = getHttpHeaders(acceptType, MediaType.APPLICATION_JSON);
     	HttpEntity<String> httpEntity = new HttpEntity<>(PARAMETERS, headers);
-        ResponseEntity<UserCallLogRecord> response = restTemplate.exchange(prepareCallLogService(accountId, extensionId, callRecordId, view), HttpMethod.GET, httpEntity, new ParameterizedTypeReference<UserCallLogRecord>() {});
+        ResponseEntity<UserCallLogRecord> response = restTemplate.exchange(prepareCallLogService(accountId, extensionId, callRecordId, view), HttpMethod.GET, httpEntity, UserCallLogRecord.class);
         if (response.getStatusCode().equals(HttpStatus.OK)) {
         	userCallLogRecord = response.getBody();
         }
@@ -49,7 +48,7 @@ public class CallLogRestEntity {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Bearer "+token);
         headers.set("Accept", acceptHeader);
-        headers.set("Content-Type", acceptHeader);
+        headers.set("Content-Type", "");
         headers.setContentType(mediaType);
         return headers;
     }
