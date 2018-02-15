@@ -8,4 +8,9 @@ public class CallLogLiterals {
 	public static final String SLASH = "/";
 	public static final String QUESTION = "?";
 	public static final String EQUAL = "=";
+	public static final String VERSION = "v1.0";
+	public static final String OAUTH = "oauth";
+	public static final String AUTHORIZE = "authorize";
+	public static final String TOKEN="token";
+	public static final String PARAMETERS = "parameters";
 }
